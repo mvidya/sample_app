@@ -42,7 +42,12 @@ class CustomersController < ApplicationController
 
 	def destroy
 		@customer = Customer.find(params[:id])
-		@customer.destroy
+		if @customer.destroy
+			flash[:notice] = "Customer deleted succesfully"
+		else
+			flash[:error] = "Error while deleting customer"
+		end
+		redirect_to customers_path
 	end
 
 	private
