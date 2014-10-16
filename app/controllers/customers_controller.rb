@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
 
 	def new
-		@customer =Customer.new
+		@customer = Customer.new
 		@address = @customer.addresses.new
 	end
 
