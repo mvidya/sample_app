@@ -8,8 +8,10 @@ class CustomersController < ApplicationController
 	def create
 		@customer = Customer.new(customer_params)
 		if @customer.save
+			flash[:notice] = "Customer created succesfully"
 			redirect_to customers_path
 		else
+			flash[:error] = "Error while creating customer"
 			render :new
 		end
 	end
