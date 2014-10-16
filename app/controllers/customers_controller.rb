@@ -30,6 +30,7 @@ class CustomersController < ApplicationController
 
 	def update
 		@customer = Customer.find(params[:id])
+		debugger
 		if @customer.update(customer_params)
 			flash[:notice] = "Customer updated succesfully"
 			redirect_to customers_path
@@ -40,7 +41,8 @@ class CustomersController < ApplicationController
 	end
 
 	def destroy
-		
+		@customer = Customer.find(params[:id])
+		@customer.destroy
 	end
 
 	private
