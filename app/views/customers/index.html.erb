@@ -1,0 +1,34 @@
+<h1>Listing Customers</h1>
+<div style="float:right"><%= link_to "New customer", new_customer_path %></div>
+<table border="1" style="width:100%">
+
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Primary Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Address Type</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% unless @customers.empty? %>
+    <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer.first_name %></td>
+      <td><%= customer.last_name %></td>
+      <td><%= customer.addresses.first.primary_address %></td>
+      <td><%= customer.addresses.first.city%></td>
+      <td><%= customer.addresses.first.state%></td>
+      <td><%= customer.addresses.first.address_type.add_type%></td>
+    </tr>
+    <% end %>
+    <% else %>
+    <tr>
+      <td colspan="6" style="text-align:center">No customers found</td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
