@@ -1,8 +1,20 @@
 class CustomersController < ApplicationController
 
+	def index
+		@customers = Customer.all 
+	end
+
+	def show
+		@customer = Customer.find(params[:id]) 
+	end
+
 	def new
 		@customer = Customer.new
 		@address = @customer.addresses.new
+	end
+
+	def edit
+		@customer = Customer.find(params[:id]) 
 	end
 
 	def create
@@ -16,8 +28,19 @@ class CustomersController < ApplicationController
 		end
 	end
 
-	def index
-		@customers = Customer.all 
+	def update
+		@customer = Customer.find(params[:id])
+		if @customer.update(customer_params)
+			flash[:notice] = "Customer updated succesfully"
+			redirect_to customers_path
+		else
+			flash[:error] = "Error while updating customer"
+			render :edit
+		end
+	end
+
+	def destroy
+		
 	end
 
 	private
