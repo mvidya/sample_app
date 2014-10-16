@@ -25,7 +25,7 @@
       <td><%= customer.addresses.first.state%></td>
       <td><%= customer.addresses.first.address_type.add_type%></td>
       <td><%= link_to "Edit" , edit_customer_path(customer) %></td>
-      <td><%= link_to "Show" , customer_path(customer), method: :delete %></td>
+      <td><%= link_to "Show" , customer_path(customer) %></td>
       <td><%= link_to "Delete" , customer_path(customer), method: :delete %></td>
     </tr>
     <% end %>

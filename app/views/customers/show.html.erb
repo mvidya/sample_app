@@ -1,0 +1,16 @@
+<h2> Customer show page </h2>
+
+<ul> 
+  <li> <%= @customer.first_name %> </li>
+  <li> <%= @customer.last_name %> </li>
+  <li> 
+    <h3> Customer address </h3>
+    <ul>
+      <li><%= @customer.addresses.first.primary_address %></li>
+      <li><%= @customer.addresses.first.city%></li>
+      <li><%= @customer.addresses.first.state%></li>
+      <li><%= @customer.addresses.first.address_type.add_type%></li>
+    </ul>
+  </li>
+</ul>
+<%= link_to "Home", customers_path %>
