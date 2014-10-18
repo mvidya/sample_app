@@ -10,7 +10,8 @@ class CustomersController < ApplicationController
 
 	def new
 		@customer = Customer.new
-		@address = @customer.addresses.new
+		2.times { @customer.addresses.build }
+		# @address = @customer.addresses.new
 	end
 
 	def edit
