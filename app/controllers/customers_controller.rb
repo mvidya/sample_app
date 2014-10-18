@@ -14,7 +14,7 @@ class CustomersController < ApplicationController
 	end
 
 	def edit
-		@customer = Customer.find(params[:id]) 
+		@customer = Customer.find(params[:id])
 	end
 
 	def create
@@ -30,8 +30,7 @@ class CustomersController < ApplicationController
 
 	def update
 		@customer = Customer.find(params[:id])
-		debugger
-		if @customer.update(customer_params)
+		if @customer.update_attributes(customer_params)
 			flash[:notice] = "Customer updated succesfully"
 			redirect_to customers_path
 		else
@@ -53,7 +52,8 @@ class CustomersController < ApplicationController
 	private
 
 	def customer_params
-		params.require(:customer).permit(:first_name, :last_name, addresses_attributes: [:primary_address, :city, :state, :address_type_id] )
+		params.require(:customer).permit(:first_name, :last_name, addresses_attributes: [:id, :primary_address, :city, :state, :address_type_id] )
 	end
 	
 end
+	
